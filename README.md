@@ -1,3 +1,3 @@
 # sub-tracker
 
-OpenText WInter '22 Primer Project
+OpenText Winter '22 Primer Project
