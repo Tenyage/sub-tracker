@@ -1,14 +1,13 @@
-// import { ReactComponent as Logo } from "../public/logo.svg";
-import Logo from "../public/logo.svg";
-import { Test } from "../components/Test";
+import Logo from "../components/logo";
+import { SearchBar } from "../components/searchBar";
 
 const HomePage = () => {
   return (
     <>
-      <Logo/>
-      <Test/>
+      <Logo />
+      <SearchBar />
     </>
-  )
-}
+  );
+};
 
 export default HomePage;
