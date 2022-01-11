@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
       <Logo />
-      <SearchBar />
+      <SearchBar isHomePage={true} />
     </>
   );
 };
