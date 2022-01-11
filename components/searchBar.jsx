@@ -6,8 +6,10 @@ import { styled, alpha } from "@mui/material/styles";
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { red } from "@mui/material/colors";
-import router from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Search = styled("div")(({ theme, minWidth }) => ({
   position: "relative",
@@ -48,8 +50,15 @@ const RedButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const SearchBar = ({ minWidth, isHomePage }) => {
+export const SearchBar = ({
+  minWidth,
+  isHomePage,
+  isTrackedPage,
+  isDetailsPage,
+}) => {
   const [searchParam, setSearchParam] = useState("");
+  const router = useRouter();
+  const cachedSearchParam = router.query.searchParam;
 
   return isHomePage ? (
     <>
@@ -64,12 +73,12 @@ export const SearchBar = ({ minWidth, isHomePage }) => {
           <RedButton
             variant="contained"
             startIcon={<SearchIcon />}
-            onClick={() => {
+            onClick={() =>
               router.push({
                 pathname: "/search-channels",
-                // query: { searchParam: searchParam },
-              });
-            }}
+                ...(searchParam && { query: { searchParam: searchParam } }),
+              })
+            }
           >
             Search
           </RedButton>
@@ -82,11 +91,55 @@ export const SearchBar = ({ minWidth, isHomePage }) => {
         <StyledInputBase
           placeholder="Search..."
           inputProps={{ "aria-label": "search" }}
+          onChange={(e) => setSearchParam(e.target.value)}
+          defaultValue={cachedSearchParam}
         />
-        <IconButton size="small" aria-label="perform search" color="primary">
+        <IconButton
+          size="small"
+          aria-label="perform search"
+          color="primary"
+          onClick={() =>
+            router.push({
+              pathname: "/search-channels",
+              ...((searchParam || cachedSearchParam) && {
+                query: { searchParam: searchParam || cachedSearchParam },
+              }),
+            })
+          }
+        >
           <SearchIcon />
         </IconButton>
       </Search>
+      {(isTrackedPage || isDetailsPage) && (
+        <Button
+          sx={{ mr: 3 }}
+          variant="contained"
+          aria-label="back"
+          onClick={() =>
+            router.push({
+              pathname: "/search-channels",
+              ...(cachedSearchParam && {
+                query: { searchParam: cachedSearchParam },
+              }),
+            })
+          }
+        >
+          <ArrowBackIcon />
+        </Button>
+      )}
+      {!isTrackedPage && (
+        <Button
+          variant="contained"
+          startIcon={<LocationSearchingIcon />}
+          onClick={() =>
+            router.push({
+              pathname: "/tracked",
+            })
+          }
+        >
+          Tracked
+        </Button>
+      )}
     </>
   );
 };
