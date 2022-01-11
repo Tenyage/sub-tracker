@@ -23,9 +23,9 @@ export default function SearchChannelsPage({}) {
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <SearchBar />
-        <Button variant="contained" startIcon={<LocationSearchingIcon />}>
+        {/* <Button variant="contained" startIcon={<LocationSearchingIcon />}>
           Tracked
-        </Button>
+        </Button> */}
       </Toolbar>
     </AppBar>
   );
