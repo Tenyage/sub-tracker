@@ -1,8 +1,7 @@
 import React from "react";
-import { Button, Input, TextField } from "@mui/material";
-import { Box, maxWidth } from "@mui/system";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, width } from "@fortawesome/free-solid-svg-icons/faSearch";
+import { Button, TextField } from "@mui/material";
+import { Box } from "@mui/system";
+import SearchIcon from "@mui/icons-material/Search";
 import { red } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import router from "next/router";
@@ -27,15 +26,17 @@ export const SearchBar = () => {
           <TextField
             sx={{ ml: 1, mr: 1, width: 700 }}
             label="Search for..."
+            size="small"
             onChange={(e) => setSearchParam(e.target.value)}
           />
           <RedButton
-            sx={{ fontSize: 25 }}
             variant="contained"
-            startIcon={<FontAwesomeIcon icon={faSearch} />}
+            startIcon={<SearchIcon />}
             onClick={() => {
-              console.log(searchParam);
-              router.push("/search");
+              router.push({
+                pathname: "/search",
+                // query: { searchParam: searchParam },
+              });
             }}
           >
             Search
