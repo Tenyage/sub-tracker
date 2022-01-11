@@ -1,9 +1,13 @@
-import { Test } from "../components/Test"
+import Logo from "../components/logo";
+import { SearchBar } from "../components/searchBar";
 
-export default function Home() {
+const HomePage = () => {
   return (
     <>
-      <Test/>
+      <Logo />
+      <SearchBar isHomePage={true} />
     </>
-  )
-}
+  );
+};
+
+export default HomePage;
