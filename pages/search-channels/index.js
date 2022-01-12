@@ -1,9 +1,11 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { SearchBar } from "../../components/searchBar";
+import Image from "next/image";
+
+import { SearchBar } from "../../components/SearchBar";
+import { TrackedButton } from "../../components/TrackedButton";
 
 export default function SearchChannelsPage({}) {
   return (
@@ -15,11 +17,12 @@ export default function SearchChannelsPage({}) {
       }}
     >
       <Toolbar>
-        <Typography variant="h6" noWrap component="div" color="black">
-          SubTracker
-        </Typography>
+        <Box sx={{ width: "200px"}}>
+          <Image src="/logo.png" alt="logo" width="1025" height="200" layout="responsive" />
+        </Box>
         <Box sx={{ flexGrow: 1 }} />
         <SearchBar />
+        <TrackedButton/>
       </Toolbar>
     </AppBar>
   );
