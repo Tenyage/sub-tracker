@@ -3,7 +3,7 @@ import LogoImage from "next/image";
 import { styled } from "@mui/material/styles";
 
 const StyledLogoWrapper = styled("div")(({ theme }) => ({
-  display: "block",
+ display: "block",
   marginLeft: "auto",
   marginRight: "auto",
   width: "50%",
