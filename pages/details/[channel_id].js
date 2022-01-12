@@ -1,9 +1,9 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { SearchBar } from "../../components/SearchBar";
 import Image from "next/image";
+import ChartData from "../../components/ChartData";
 
 const DetailsPage = () => {
   return (
@@ -29,6 +29,7 @@ const DetailsPage = () => {
           <SearchBar isDetailsPage={true} />
         </Toolbar>
       </AppBar>
+      <ChartData />
     </>
   );
 };
