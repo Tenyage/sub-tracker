@@ -4,7 +4,12 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import { styled, alpha } from '@mui/material/styles'
 
-const Search = styled('div')(({ theme, minWidth }) => ({
+const Search = styled('div')(({
+  theme,
+  minwidth,
+  width,
+  maxwidth,
+}) => ({
   position: 'relative',
   display: 'flex',
   color: theme.palette.common.black,
@@ -14,11 +19,12 @@ const Search = styled('div')(({ theme, minWidth }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
+  marginLeft: theme.spacing(3),
   marginRight: theme.spacing(3),
   justifyContent: 'space-between',
-  minWidth: minWidth || '40%',
-  width: 'auto',
+  minWidth: minwidth || '40%',
+  width: width || 'auto',
+  maxWidth: maxwidth || '100%',
 }))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -31,11 +37,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const SearchBar = ({
-  minWidth
+  minWidth,
+  width,
+  maxWidth,
 }) => {
   return (
     <>
-    <Search minWidth={minWidth}>
+    <Search minwidth={minWidth} width={width} maxwidth={maxWidth}>
       <StyledInputBase 
         placeholder="Search..."
         inputProps={{ 'aria-label': 'search' }}
