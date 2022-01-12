@@ -31,6 +31,7 @@ const Search = styled("div")(({ theme, minwidth, width, maxwidth }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
+  width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(0.75),
     transition: theme.transitions.create("width"),
