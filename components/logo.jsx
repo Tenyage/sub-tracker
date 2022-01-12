@@ -1,9 +1,9 @@
 import * as React from "react";
-import LogoImage from "next/image";
+import Image from "next/image";
 import { styled } from "@mui/material/styles";
 
 const StyledLogoWrapper = styled("div")(({ theme }) => ({
- display: "block",
+  display: "block",
   marginLeft: "auto",
   marginRight: "auto",
   width: "40%",
@@ -13,7 +13,13 @@ const StyledLogoWrapper = styled("div")(({ theme }) => ({
 const Logo = () => {
   return (
     <StyledLogoWrapper>
-      <LogoImage src="/logo.png" alt="logo" width="1025" height="200" layout="responsive"/>
+      <Image
+        src="/logo.png"
+        alt="logo"
+        width="1025"
+        height="200"
+        layout="responsive"
+      />
     </StyledLogoWrapper>
   );
 };

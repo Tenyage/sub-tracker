@@ -2,7 +2,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { SearchBar } from "../../components/searchBar";
+import { SearchBar } from "../../components/SearchBar";
+import Image from "next/image";
 
 const DetailsPage = () => {
   return (
@@ -15,9 +16,15 @@ const DetailsPage = () => {
         }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" color="black">
-            SubTracker
-          </Typography>
+          <Box sx={{ width: "200px" }}>
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width="1025"
+              height="200"
+              layout="responsive"
+            />
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <SearchBar isDetailsPage={true} />
         </Toolbar>
