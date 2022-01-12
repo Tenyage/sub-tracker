@@ -1,7 +1,8 @@
-import Logo from "../components/logo";
+import Logo from "../components/Logo";
 
 import { SearchBar } from "../components/SearchBar";
 import Box from "@mui/material/Box"
+import { ChannelCard } from "../components/ChannelCard";
 
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
       }}>
         <SearchBar width={"50%"}/>
       </Box>
+      
     </>
   );
 };
