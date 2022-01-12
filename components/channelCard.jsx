@@ -40,7 +40,7 @@ export default function ChannelCard(props) {
 
   return (
     <Box sx={{ width: 200 }} className={classes.Box}>
-      <Card className={classes.channelCard} variant="outlined">
+      <Card className={classes.channelCard} variant="outlined" elevation={22}>
       <CardContent>
         <Box display="flex" justifyContent={"center"} >
         <Avatar src={props.avatarImg} className={classes.avatar} />
