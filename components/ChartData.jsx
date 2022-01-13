@@ -25,7 +25,9 @@ const testLabels = [
 
 ////////////////////////////////////////////////
 
-const ChartData = () => {
+const ChartData = ({
+   channelID
+}) => {
    const { liveData, predictionData } = testData;
 
    const live = (ctx, value) => {

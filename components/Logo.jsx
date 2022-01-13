@@ -1,26 +1,19 @@
 import * as React from "react";
 import Image from "next/image";
-import { styled } from "@mui/material/styles";
+import Link from "next/link";
 
-const StyledLogoWrapper = styled("div")(({ theme }) => ({
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "auto",
-  width: "40%",
-  marginTop: "25vh",
-}));
 
 const Logo = () => {
   return (
-    <StyledLogoWrapper>
-      <Image
-        src="/logo.png"
-        alt="logo"
-        width="1025"
-        height="200"
-        layout="responsive"
-      />
-    </StyledLogoWrapper>
+        <Link href="/" passHref><a>
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width="1025"
+            height="200"
+            layout="responsive"
+          />
+        </a></Link>
   );
 };
 

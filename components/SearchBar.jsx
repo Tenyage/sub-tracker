@@ -3,12 +3,9 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
-import { Button, TextField } from "@mui/material";
-import { Box } from "@mui/system";
-import { red } from "@mui/material/colors";
+import Button from "../components/Button";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Search = styled("div")(({ theme, minwidth, width, maxwidth }) => ({
@@ -18,10 +15,13 @@ const Search = styled("div")(({ theme, minwidth, width, maxwidth }) => ({
   border: `3px solid ${theme.palette.common.black}`,
   borderRadius: 5,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
+  transition: "100ms linear",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    border: `1px solid ${theme.palette.common.black}`,
+    marginLeft: `calc(${theme.spacing(3)}+2px)`,
+    marginRight: `calc(${theme.spacing(3)}+2px)`,
   },
-  marginLeft: 0,
+  marginLeft: theme.spacing(3),
   marginRight: theme.spacing(3),
   justifyContent: "space-between",
   minWidth: minwidth || "40%",
@@ -39,27 +39,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const StyledInputWrapper = styled("div")(({ theme }) => ({
-  margin: "auto",
-  width: "50%",
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-}));
-
-const RedButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(red[500]),
-  backgroundColor: red[500],
-  "&:hover": {
-    backgroundColor: red[700],
-  },
-}));
-
 export const SearchBar = ({
   minWidth,
   width,
   maxWidth,
-  isHomePage,
   isTrackedPage,
   isDetailsPage,
 }) => {
@@ -67,32 +50,7 @@ export const SearchBar = ({
   const router = useRouter();
   const cachedSearchParam = router.query.searchParam;
 
-  return isHomePage ? (
-    <>
-      <Box>
-        <StyledInputWrapper>
-          <TextField
-            sx={{ ml: 1, mr: 1, width: 700 }}
-            label="Search for..."
-            size="small"
-            onChange={(e) => setSearchParam(e.target.value)}
-          />
-          <RedButton
-            variant="contained"
-            startIcon={<SearchIcon />}
-            onClick={() =>
-              router.push({
-                pathname: "/search-channels",
-                ...(searchParam && { query: { searchParam: searchParam } }),
-              })
-            }
-          >
-            Search
-          </RedButton>
-        </StyledInputWrapper>
-      </Box>
-    </>
-  ) : (
+  return (
     <>
       <Search minwidth={minWidth} width={width} maxwidth={maxWidth}>
         <StyledInputBase
@@ -117,36 +75,6 @@ export const SearchBar = ({
           <SearchIcon />
         </IconButton>
       </Search>
-      {(isTrackedPage || isDetailsPage) && (
-        <Button
-          sx={{ mr: 3 }}
-          variant="contained"
-          aria-label="back"
-          onClick={() =>
-            router.push({
-              pathname: "/search-channels",
-              ...(cachedSearchParam && {
-                query: { searchParam: cachedSearchParam },
-              }),
-            })
-          }
-        >
-          <ArrowBackIcon />
-        </Button>
-      )}
-      {!isTrackedPage && !isHomePage && (
-        <Button
-          variant="contained"
-          startIcon={<LocationSearchingIcon />}
-          onClick={() =>
-            router.push({
-              pathname: "/tracked",
-            })
-          }
-        >
-          Tracked
-        </Button>
-      )}
     </>
   );
 };

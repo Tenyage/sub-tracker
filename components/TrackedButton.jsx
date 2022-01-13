@@ -1,18 +1,16 @@
 import * as React from 'react'
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
+import { useRouter } from "next/router"
+import Button from "./Button"
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 
-const CustomButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.primary,
-  border: `3px solid ${theme.palette.primary.main}`,
-  ['&:hover']: {
-    border: `3px solid ${theme.palette.primary.main}`,
-  }
-})) 
-
 export const TrackedButton = ({}) => {
+  const router = useRouter()
   return (
-    <CustomButton variant="outlined" endIcon={<LocationSearchingIcon/>}>TRACKED</CustomButton>
+    <Button
+      endIcon={<LocationSearchingIcon/>}
+      onClick={() => router.push({ pathname: "/tracked" })}
+    >
+      TRACKED
+    </Button>
   )
 }
