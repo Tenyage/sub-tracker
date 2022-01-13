@@ -6,26 +6,34 @@ import Avatar from "@mui/material/Avatar";
 import { CardActionArea, CardContent } from "@mui/material";
 import router from "next/router";
 
-export const ChannelCard = (props) => {
+const ChannelCard = (props) => {
   return (
-    <Card elevation={10} sx={{
-      minHeight: "150px",
-      borderRadius: "10px",
-      width: 250,
-      height: 250,
-      borderWidth: 1,
-    }}>
+    <Card
+      elevation={10}
+      sx={{
+        minHeight: "150px",
+        borderRadius: "10px",
+        width: 250,
+        height: 250,
+        borderWidth: 1,
+      }}
+    >
       <CardActionArea
-        onClick={() => !props.disabled && router.push(`/details/${props.channelID}`)}
+        onClick={() =>
+          !props.disabled && router.push(`/details/${props.channelID}`)
+        }
       >
         <CardContent>
           <Box display="flex" justifyContent={"center"}>
-            <Avatar src={props.avatarImg} sx={{
-              margin: 1,
-              width: 120,
-              height: 120,
-              display: "flex",
-            }}/>
+            <Avatar
+              src={props.avatarImg}
+              sx={{
+                margin: 1,
+                width: 120,
+                height: 120,
+                display: "flex",
+              }}
+            />
           </Box>
           <Typography variant="h6" align="center" gutterBottom>
             {props.channelName}
@@ -37,4 +45,6 @@ export const ChannelCard = (props) => {
       </CardActionArea>
     </Card>
   );
-}
+};
+
+export default ChannelCard;

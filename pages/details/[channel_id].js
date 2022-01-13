@@ -1,17 +1,17 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-import { SearchBar } from "../../components/SearchBar";
-import { TrackedButton } from "../../components/TrackedButton";
+import SearchBar from "../../components/SearchBar";
+import TrackedButton from "../../components/TrackedButton";
 import Button from "../../components/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Image from "next/image";
 import ChartData from "../../components/ChartData";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 
 const DetailsPage = () => {
-  const router = useRouter()
-  const { channel_id } = router.query
+  const router = useRouter();
+  const { channel_id } = router.query;
   const cachedSearchParam = router.query.searchParam;
 
   return (
@@ -49,15 +49,17 @@ const DetailsPage = () => {
           >
             <ArrowBackIcon />
           </Button>
-          <TrackedButton/>
+          <TrackedButton />
         </Toolbar>
       </AppBar>
-      <Box sx={{
-        marginLeft: "5%",
-        marginRight: "5%",
-        marginTop: "30px",
-      }}>
-        <ChartData channelID={channel_id}/>
+      <Box
+        sx={{
+          marginLeft: "5%",
+          marginRight: "5%",
+          marginTop: "30px",
+        }}
+      >
+        <ChartData channelID={channel_id} />
       </Box>
     </>
   );

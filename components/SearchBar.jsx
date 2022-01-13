@@ -3,10 +3,8 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
-import Button from "../components/Button";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Search = styled("div")(({ theme, minwidth, width, maxwidth }) => ({
   position: "relative",
@@ -39,13 +37,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export const SearchBar = ({
-  minWidth,
-  width,
-  maxWidth,
-  isTrackedPage,
-  isDetailsPage,
-}) => {
+const SearchBar = ({ minWidth, width, maxWidth }) => {
   const [searchParam, setSearchParam] = useState("");
   const router = useRouter();
   const cachedSearchParam = router.query.searchParam;
@@ -58,6 +50,15 @@ export const SearchBar = ({
           inputProps={{ "aria-label": "search" }}
           onChange={(e) => setSearchParam(e.target.value)}
           defaultValue={cachedSearchParam}
+          onKeyPress={(e) =>
+            e.key === "Enter" &&
+            router.push({
+              pathname: "/search-channels",
+              ...((searchParam || cachedSearchParam) && {
+                query: { searchParam: searchParam || cachedSearchParam },
+              }),
+            })
+          }
         />
         <IconButton
           size="small"
@@ -78,3 +79,5 @@ export const SearchBar = ({
     </>
   );
 };
+
+export default SearchBar;

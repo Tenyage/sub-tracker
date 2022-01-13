@@ -1,6 +1,6 @@
 import Logo from "../components/Logo";
-import { SearchBar } from "../components/SearchBar";
-import { TrackedButton } from "../components/TrackedButton";
+import SearchBar from "../components/SearchBar";
+import TrackedButton from "../components/TrackedButton";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
@@ -20,13 +20,17 @@ const HomePage = () => {
           marginBottom: "5vh",
         }}
       >
-        <StyledLogoWrapper><Logo/></StyledLogoWrapper>
+        <StyledLogoWrapper>
+          <Logo />
+        </StyledLogoWrapper>
       </Box>
-      <Box sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}>
-        <SearchBar width={"50%"}/>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <SearchBar width={"50%"} />
         <TrackedButton />
       </Box>
     </>
