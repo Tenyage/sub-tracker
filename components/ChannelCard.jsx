@@ -28,7 +28,7 @@ const ChannelCard = (props) => {
             <Avatar
               src={props.avatarImg}
               sx={{
-                margin: 1,
+                margin: 1.5,
                 width: 120,
                 height: 120,
                 display: "flex",
